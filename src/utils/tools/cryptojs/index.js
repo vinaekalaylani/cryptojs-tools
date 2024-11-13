@@ -1,8 +1,8 @@
 import CryptoJS from "crypto-js";
 
 export function encrypt(props) {
-	const { payload, clientKey, sharedKey } = props;
-	let key = clientKey + "Y3BtLnN5c3RlbXM" + sharedKey;
+	const { payload, clientKey, sharedKey, secretKey } = props;
+	let key = clientKey + secretKey + sharedKey;
 	key = CryptoJS.SHA512(key);
 	key = key.toString();
 	key = key.substring(32, 64);
@@ -16,8 +16,8 @@ export function encrypt(props) {
 }
 
 export function decrypt(props) {
-	const { payload, clientKey, sharedKey } = props;
-	let key = clientKey + "Y3BtLnN5c3RlbXM" + sharedKey;
+	const { payload, clientKey, sharedKey, secretKey } = props;
+	let key = clientKey + secretKey + sharedKey;
 	key = CryptoJS.SHA512(key);
 	key = key.toString();
 	key = key.substring(32, 64);

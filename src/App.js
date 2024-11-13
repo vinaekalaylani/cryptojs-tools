@@ -10,8 +10,9 @@ export default function App() {
 	const [result, setResult] = useState("");
 
 	const handleSubmit = (target) => {
-		const { sharedKey, clientKey, payload, type } = target;
+		const { secretKey, sharedKey, clientKey, payload, type } = target;
 		let req = {
+			secretKey,
 			sharedKey,
 			clientKey,
 			payload,
@@ -44,6 +45,11 @@ export default function App() {
 							autoComplete="off"
 							onFinish={handleSubmit}
 							onFinishFailed={handleFailed}>
+							<Form.Item
+								name="secretKey"
+								label="Secret Key">
+								<Input />
+							</Form.Item>
 							<Form.Item
 								name="sharedKey"
 								label="Shared Key">
